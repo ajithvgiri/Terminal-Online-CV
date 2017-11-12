@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head itemscope itemtype="http://schema.org/WebSite">
+    <title itemprop='name'>Arun D Nambissan</title>
+    <link rel="canonical" href="http://arund.in/" itemprop="url">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" itemprop="description" content="Arun D Nambissan | Kozhikode, Kerala, India | www.arund.in | hello@arund.in | +91 94 96 345 346">
+    <meta name="author" content="Arun D Nambissan" itemprop="author">
+    <meta name="theme-color" content="#EC4758">
+
+    <link rel="shortcut icon" href="assets/images/icon.jpg">
+
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/terminal.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <style>   
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="terminal" v-cloak>
+        
+        <div class="terminal-wrap">
+            <p class="terminal-top-bar"><strong>guest@arund.in: ~</strong></p>
+            <ul class="terminal-body">
+                <li class="line line-1"></li>
+                <li class="line line-2">&nbsp;</li>
+                <li class="line" v-if="terminalInit">send mail to "a.nambissan@gmail.com" && dial "+91 9496345346" && connect 
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'stackoverflow'" target="_blank" class="remove-link-styles arun-stackoverflow arun-tader" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a>
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'gmaps'" target="_blank" class="remove-link-styles arun-google arun-tader" title="Local Guide - Google Maps"><i class="fa fa-map-marker"></i></a>
+                    &nbsp;                            
+                    <a v-bind:href="rootUrl + 'linkedin'" target="_blank" class="remove-link-styles arun-linkedin arun-tader" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    &nbsp; 
+                    <a v-bind:href="rootUrl + 'google'" target="_blank" class="remove-link-styles arun-google arun-tader" title="+ArunDNambissan Google+" ><i class="fa fa-google-plus"></i></a>
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'twitter'" target="_blank" class="remove-link-styles arun-twitter arun-tader" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'fb'" target="_blank" class="remove-link-styles arun-fb arun-tader" title="Facebook"><i class="fa fa-facebook"></i></a>
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'instagram'" target="_blank" class="remove-link-styles arun-instagram arun-tader" title="Instagram"><i class="fa fa-instagram"></i></a>
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'clicks'" target="_blank" class="remove-link-styles arun-clicks arun-tader" title="My Clicks"><i class="fa fa-camera"></i></a>
+                    &nbsp;                        
+                    <a v-bind:href="rootUrl + 'pay'" target="_blank" class="remove-link-styles arun-stackoverflow arun-tader" title="Pay Arun"><i class="fa fa-money"></i></a>
+                </li>
+                <li class="line" v-if="terminalInit">works @ "<a href="http://www.phases.dk" target="_blank" class="remove-link-styles">Phases Innovations, Kochi, Kerala</a>"</li>
+                <li class="line" v-if="terminalInit">leisure time works => "<a href="http://www.stapto.com" target="_blank" class="remove-link-styles">Stapto | www.stapto.com</a>"</li>
+                <li class="line" v-if="terminalInit">home town => Kozhikode && now at => Kochi</li>
+                <li class="line" v-if="terminalInit">&nbsp;</li>
+                <li class="line" v-if="terminalInit">
+                	site --help
+                	<li v-if="terminalInit">Available commands:</li>
+            		<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('exit && show gui')">exit && show gui</a></li>
+                	<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('wget resume')">wget resume</a></li>
+                	<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('echo resume')">echo resume</a></li>
+                	<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('ls projects')">ls projects</a></li>
+                	<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('ls experiances')">ls experiances</a></li>
+                	<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('ls skills')">ls skills</a></li>
+                	<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('ls interests')">ls interests</a></li>
+                	<li v-if="terminalInit" class="bullet">
+                        <a v-on:click="executeThisCommand('ls edu')">ls edu</a>,
+                        <a v-on:click="executeThisCommand('ls achievements')">ls achievements</a>, 
+                        <a v-on:click="executeThisCommand('ls extra_activities')">ls extra_activities</a>
+                    </li>
+                	<!--<li class="bullet"></li>-->
+                	<!--<li v-if="terminalInit" class="bullet"><a v-on:click="executeThisCommand('talk')">talk</a></li>-->
+                </li>
+
+                <li v-for="command in allCommands" v-bind:class="command.line_class" v-html="command.txt"></li>
+
+                <li class="input-line line" v-if="terminalInit">
+            	    <input type="text" class="terminal-input" 
+                        v-model="inputVal" 
+                        v-on:keyup.enter="terminalSubmit" 
+                        v-on:keyup.up="terminalHistory('up')"
+                        v-on:keyup.down="terminalHistory('down')"
+                        v-on:keydown.ctrl.67="commandCtrl('C')"
+                        v-on:keydown.ctrl.90="commandCtrl('Z')"
+                    />
+                </li>
+
+            </ul>
+
+            <div class="terminal-footer">
+                <a class="btn close-terminal-btn" v-bind:href="rootUrl + 'home'" v-if="terminalInit">
+                    Close this terminal and view my webpage
+                    <i class="fa fa-hand-o-right"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+<script>   
+
+</script>
+
+    <script src="assets/js/possible_commands.js"></script>
+    <script src="assets/js/reply_commands.js"></script>
+    <script src="assets/js/terminal.js"></script>
+</body>
+</html>
